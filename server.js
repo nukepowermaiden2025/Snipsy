@@ -24,19 +24,36 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 //Routes
-const allArticlesRoute = require("./routes/allArticles.js")
-const indexRoute = require("./routes/index.js");
-const populateRoute = require("./routes/populateArticle.js");
-const scrapeRoute = require("./routes/scrape.js");
-const saveArticleNoteRoute = require("./routes/saveArticleNote.js")
-const userRoute = require("./routes/users.js");
+const all= require("./routes/all.js")
+const scrape= require("./routes/scrape.js");
+const populate= require("./routes/populate.js");
+const saveArticle = require("./routes/saveArticle.js")//TODO
+const saved = require("./routes/saved.js");
+const deleteArticle = require("./routes/deleteArticle.js")//TODO
 
-app.use("/articles",allArticlesRoute);
-app.use("/index",indexRoute);
-app.use(populateRoute);
-app.use("/scrape",scrapeRoute);
-app.use(saveArticleNoteRoute)
-app.use("/users",userRoute);
+const saveNote= require("./routes/saveNote.js")//TODO
+const deleteNote= require("./routes/deleteNote.js") //TODO
+
+
+const index= require("./routes/index.js");//TODO- makehomepage
+
+
+app.use("/articles",all);
+app.use("/scrape",scrape);
+app.use(populate);
+app.use("/saved",saved);
+app.use(saveArticle);
+app.use(deleteArticle);
+
+app.use(saveNote);
+app.use(deleteNote);
+
+
+
+app.use("/index",index);
+
+
+
 
 // Start the server
 app.listen(PORT, function() {
