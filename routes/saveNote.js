@@ -5,10 +5,10 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 
 
-router.post("/articles/:id",(req,res,next)=>{
+router.post("/articles/:id",function(req,res,next){
     //Add the body from the form
     db.Note.create(req.body)
-    .then((dbNote)=>{
+    .then(function(dbNote){
         //find the Article and update that particular note
     return db.Article.findOneAndUpdate(
         { _id: req.params.id },
@@ -16,8 +16,8 @@ router.post("/articles/:id",(req,res,next)=>{
         { new: true }//return the newest change
         );
     })
-    .then((dbArticle)=>res.json(dbArticle))//send back the updated article
-    .catch((err)=>res.json(err))
+    .then(function(dbArticle){res.json(dbArticle)})//send back the updated article
+    .catch(function(err){res.json(err)})
 
 });
 

@@ -5,12 +5,13 @@ const mongoose = require("mongoose");
 const app = express();
 const PORT = 3000;
 
-// // Require all models
+// Require all models
 // const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/Snipsy";
 // mongoose.Promise = Promise;
 // mongoose.connect(MONGODB_URI);
 
-mongoose.connect("mongodb://localhost/week18Populater");
+mongoose.connect("mongodb://localhost/Snipsy");
+
 
 // Use morgan logger for logging requests& bodyparser middleware as well
 app.use(logger("dev"));
@@ -27,12 +28,12 @@ app.set("view engine", "handlebars");
 const all= require("./routes/all.js")
 const scrape= require("./routes/scrape.js");
 const populate= require("./routes/populate.js");
-const saveArticle = require("./routes/saveArticle.js")//TODO
-const saved = require("./routes/saved.js");
-const deleteArticle = require("./routes/deleteArticle.js")//TODO
+// const saveArticle = require("./routes/saveArticle.js")//TODO
+// const saved = require("./routes/saved.js");//TODO
+// const deleteArticle = require("./routes/deleteArticle.js")//TODO
 
-const saveNote= require("./routes/saveNote.js")//TODO
-const deleteNote= require("./routes/deleteNote.js") //TODO
+const saveNote= require("./routes/saveNote.js")
+// const deleteNote= require("./routes/deleteNote.js") //TODO
 
 
 const index= require("./routes/index.js");//TODO- makehomepage
@@ -41,12 +42,12 @@ const index= require("./routes/index.js");//TODO- makehomepage
 app.use("/articles",all);
 app.use("/scrape",scrape);
 app.use(populate);
-app.use("/saved",saved);
-app.use(saveArticle);
-app.use(deleteArticle);
+// app.use("/saved",saved);
+// app.use(saveArticle);
+// app.use(deleteArticle);
 
 app.use(saveNote);
-app.use(deleteNote);
+// app.use(deleteNote);
 
 
 
