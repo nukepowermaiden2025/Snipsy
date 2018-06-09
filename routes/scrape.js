@@ -1,20 +1,20 @@
-var express = require('express');
-var router = express.Router();
-var db = require("../models");
-var axios = require("axios");
-var cheerio = require("cheerio");
+const express = require('express');
+const router = express.Router();
+const db = require("../models");
+const axios = require("axios");
+const cheerio = require("cheerio");
 
 /* GET home page. */
 router.get('/', function (req, res, next){
    // First, we grab the body of the html with request
    axios.get("https://www.npr.org/").then(function(response){
     // Then, we load that into cheerio and save it to $ for a shorthand selector
-    var $ = cheerio.load(response.data);
+    const $ = cheerio.load(response.data);
 
     // Now, we grab every h2 within an article tag, and do the following:
     $("article").each(function(i, element){
       // Save an empty result object
-      var result = {};
+      let result = {};
 
       // Add the text and href of every link, and save them as properties of the result object
       result.title = $(this)
@@ -28,6 +28,13 @@ router.get('/', function (req, res, next){
         .children(".story-text")
         .children("a:first-of-type")
         .attr("href");
+
+        result.summary = $(this)
+        .children(".story-wrap")
+        .children(".story-text")
+        .children("a:nth-of-type(2)")
+        .find("p")
+        .text();
 
       // Create a new Article using the `result` object built from scraping
       db.Article.create(result)

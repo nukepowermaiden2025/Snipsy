@@ -6,10 +6,17 @@ const cheerio = require("cheerio");
 
 /* GET home page. */
 
-router.get('/',(req,res, next)=>{
+router.get('/',function(req,res, next){
     db.Article.find({})
-    .then((dbArticle)=>res.json(dbArticle))
-    .catch((err)=>res.json(err))
+    .then(function(dbArticle){
+        var hbsObject = {
+            dbArticle: dbArticle
+          };
+          console.log(hbsObject);
+        res.render('index', hbsObject)
+
+    })
+    .catch(function(err){res.json(err)})
 
 });
 
