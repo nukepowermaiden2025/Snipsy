@@ -51,7 +51,7 @@ app.use(saveNote);
 
 
 
-app.use("/index",index);
+app.use("/",index);
 
 
 

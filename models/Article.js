@@ -17,12 +17,22 @@ var ArticleSchema = new Schema({
 
   summary:{
     type: String,
-    default: "Click to view more"
+    default: "Click the link above to view more"
+  },
+
+  img:{
+    type:String,
+    required: true,
+    default:"https://placeimg.com/640/480/any"
   },
 
   note: {
     type: Schema.Types.ObjectId,
     ref: "Note"
+  },
+  saved:{
+    type:Boolean,
+    default:false
   }
 });
 

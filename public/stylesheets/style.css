@@ -1,14 +1,33 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
 
-a {
-  color: #00B7FF;
+body{
+  overflow-x: hidden;
 }
-
-body { background-color: #F2F6D0 }
 #wrapper {
+  overflow-x: hidden;overflow-x: hidden;
+  max-width:auto;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+.snipsy{
+  background-image: url("../images/camera-notebook-pen-yellow.jpg");
+  background-size:contain;
+  min-height: 40vh;
+  overflow-x: hidden;
+  
+}
+
+.snipsy-shadow{
+  background-color: transparent;
+  overflow-x: hidden; 
+}
+
+.title{
+  text-shadow:black 2px 0 10px;
+  font-weight: 350;
+}
+
+/* #wrapper {
   width: 960px;
   margin-left: auto;
   margin-right: auto;
@@ -36,4 +55,4 @@ input {
 textarea {
   height: 200px;
   font-size: 18px;
-}
+} */

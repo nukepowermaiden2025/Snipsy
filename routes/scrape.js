@@ -11,12 +11,11 @@ router.get('/', function (req, res, next){
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     const $ = cheerio.load(response.data);
 
-    // Now, we grab every h2 within an article tag, and do the following:
     $("article").each(function(i, element){
       // Save an empty result object
       let result = {};
 
-      // Add the text and href of every link, and save them as properties of the result object
+      // Add the text,href,summary in the obj
       result.title = $(this)
         .children(".story-wrap")
         .children(".story-text")
@@ -29,12 +28,21 @@ router.get('/', function (req, res, next){
         .children("a:first-of-type")
         .attr("href");
 
-        result.summary = $(this)
+      result.summary = $(this)
         .children(".story-wrap")
         .children(".story-text")
         .children("a:nth-of-type(2)")
         .find("p")
         .text();
+
+      result.img = $(this)
+        .children(".story-wrap")
+        .children(".thumb-image")
+        .children(".bucketwrap.homeThumb")
+        .children(".imagewrap")
+        .children("a")
+        .find("img")
+        .attr("alt");
 
       // Create a new Article using the `result` object built from scraping
       db.Article.create(result)
@@ -43,7 +51,7 @@ router.get('/', function (req, res, next){
     });
 
     // If we were able to successfully scrape and save an Article, send a message to the client
-    res.send("Scrape Complete");
+    res.redirect("/articles");
   });
 });
 

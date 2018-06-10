@@ -1,16 +1,26 @@
 // Grab the articles as a json
-$.getJSON("/articles", function(data) {
-  // For each one
-  for (var i = 0; i < data.length; i++) {
-    // Display the apropos information on the page
-    $("#articles").append(`<p data-id=${data[i]._id}> ${data[i].title}
+// $.getJSON("/articles", function(data) {
+//   // For each one
+//   for (var i = 0; i < data.length; i++) {
+//     // Display the apropos information on the page
+//     $("#articles").append(`<p data-id=${data[i]._id}> ${data[i].title}
     
-    ${data[i].link} 
+//     ${data[i].link} 
 
-    ${data[i].summary} 
-    </p>`);
-  }
+//     ${data[i].summary} 
+//     </p>`);
+//   }
+// });
+
+// Whenever someone clicks on the "get articles button
+//trigger the routes needed and then send to the next page
+$(document).on("click", "#scrape-articles", function() {
+  window.location.replace("/scrape");
 });
+  
+  
+
+
 
 
 // Whenever someone clicks a p tag

@@ -5,17 +5,41 @@
     <meta charset="UTF-8">
     <title>{{title}}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    {{!-- <link rel='stylesheet' href='/stylesheets/style.css' /> --}}
+    <link rel='stylesheet' href='/stylesheets/style.css' />
     <style>
     </style>
   </head>
   <body>
+    <div class="row">
+			<div class = "col-12">
+				<nav class="navbar navbar-dark bg-dark">
+					<br>
+					<a href="https://nukepowermaiden2025.github.io/Bootstrap-Portfolio/portfolio.html" target="_blank" class="navbar-brand text-light" > &larr; Porfolio</a>
+					<br>
+				</nav>
+			</div>
+		</div>
     <div id="wrapper">
-      <h1>Note Scraper</h1>
-      <div id="articles"></div>
-      <div id="notes"></div>
-       {{{body}}}
-    </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="jumbotron jumbotron-fluid snipsy">
+            <div class="jumbotron snipsy-shadow">
+            <h1 class="text-center display-1 text-light align-text-top title">Snipsy Babba News</h1>
+            <button type="button" class="btn btn-light btn-lg" id="scrape-articles">Get Articles</button>
+            <button type="button" class="btn btn-light btn-lg" id="saved-articles">Saved Snips</button>
+            </div>
+          </div>
+          <div class="container>
+            <div id="articles"></div>
+            <div id="notes"></div>
+            {{{body}}}
+          </div>
+        </div>
+      </div>
+      
+    <footer class="main-footer footer-copyright text-center py-3">
+			<span>&copy; 2018 Kourtney Reynolds </span>
+		</footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="app.js"></script>
   </body>
